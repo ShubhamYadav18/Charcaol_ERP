@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payments - Charcoal ERP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/sidebar.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/tables.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="layout-wrapper">
+    <div id="sidebar-container"></div>
+    <div class="main-content">
+      <div id="navbar-container"></div>
+      
+      <div class="page-header" style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <h1 class="page-title">Payment Management</h1>
+          <p style="color: var(--text-muted);">Track incoming payments and clear dues.</p>
+        </div>
+        <button class="btn-primary" onclick="openPaymentModal()"><i class="fa-solid fa-plus"></i> Record Payment</button>
+      </div>
+
+      <div class="grid-cards" style="margin-bottom:20px;">
+        <div class="stat-card card glow-effect" style="border-left: 4px solid var(--success);">
+          <i class="fa-solid fa-money-bill-wave stat-icon" style="color:var(--success);"></i>
+          <div class="stat-info">
+            <h3>Total Received (This Month)</h3>
+            <p id="totalReceivedMonth"><span class="dyn-curr-symbol">₹</span>0</p>
+          </div>
+        </div>
+        <div class="stat-card card glow-effect" style="border-left: 4px solid var(--danger);">
+          <i class="fa-solid fa-triangle-exclamation stat-icon" style="color:var(--danger);"></i>
+          <div class="stat-info">
+            <h3>Total Pending (Market)</h3>
+            <p id="totalPendingMarket"><span class="dyn-curr-symbol">₹</span>0</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card page-transition">
+        <h3>Payment History</h3>
+        <table id="paymentsTable" class="display" style="width:100%">
+          <thead>
+            <tr>
+              <th>Receipt #</th>
+              <th>Date</th>
+              <th>Customer</th>
+              <th>Invoice #</th>
+              <th>Amount Received (₹)</th>
+              <th>Payment Method</th>
+              <th>Reference</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div id="footer-container"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="paymentModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Record New Payment</h3>
+        <button class="modal-close" onclick="closePaymentModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="paymentForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Customer</label>
+            <select class="form-control" required id="customerSelect">
+              <option value="">Select Customer...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Invoice Number</label>
+            <input type="text" class="form-control" id="payInvoiceNum" placeholder="Optional (e.g. INV-1001)">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Amount Received (₹)</label>
+            <input type="number" class="form-control" required min="1" id="payAmount">
+          </div>
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" class="form-control" required id="payDate">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Payment Method</label>
+            <select class="form-control" required id="payMethod">
+              <option value="BANK_TRANSFER">Bank Transfer</option>
+              <option value="CREDIT_CARD">Credit Card</option>
+              <option value="CASH">Cash</option>
+              <option value="CHEQUE">Cheque</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Reference / UTR No.</label>
+            <input type="text" class="form-control" required id="payRef">
+          </div>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%"><i class="fa-solid fa-check"></i> Confirm Payment</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="assets/js/api.js?v=2"></script>
+  <script src="assets/js/main.js?v=2"></script>
+  <script src="assets/js/payments.js"></script>
+</body>
+</html>

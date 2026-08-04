@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purchases - Charcoal ERP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/sidebar.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/tables.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="layout-wrapper">
+    <div id="sidebar-container"></div>
+    <div class="main-content">
+      <div id="navbar-container"></div>
+      
+      <div class="page-header" style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <h1 class="page-title">Coal Purchases</h1>
+          <p style="color: var(--text-muted);">Record new coal stock arrivals.</p>
+        </div>
+      </div>
+
+      <div class="grid-cards" style="margin-bottom:20px;">
+        <!-- Purchase Entry Form -->
+        <div class="card page-transition" style="flex:1;">
+          <h3>New Purchase Entry</h3>
+          <form id="purchaseForm" style="margin-top:20px;">
+            <input type="hidden" id="editId" value="">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Supplier</label>
+                <select class="form-control" required id="pSupplier">
+                  <option value="">Select Supplier...</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>PO / Invoice No.</label>
+                <input type="text" class="form-control" id="pInvoice" required placeholder="PO-XXXX">
+              </div>
+              <div class="form-group">
+                <label>Date</label>
+                <input type="date" class="form-control" id="pDate" required>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label>Type</label>
+                <select class="form-control" id="pType" required>
+                  <option value="Charcoal">Charcoal</option>
+                  <option value="Firewood">Firewood</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Quantity (<span class="dyn-wt-unit">MT</span>)</label>
+                <input type="number" class="form-control" id="pQty" required min="1" oninput="calcTotal()">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Rate per MT (₹)</label>
+                <input type="number" class="form-control" id="pRate" required min="1" oninput="calcTotal()">
+              </div>
+              <div class="form-group">
+                <label>Transport/Misc Charges (₹)</label>
+                <input type="number" class="form-control" id="pTransport" value="0" min="0" oninput="calcTotal()">
+              </div>
+            </div>
+
+            <div class="form-group" style="background:var(--bg-color); padding:15px; border-radius:var(--border-radius-sm); border:1px solid var(--border-color);">
+              <h3 style="margin-bottom:0; display:flex; justify-content:space-between;">
+                <span>Total Value:</span>
+                <span id="pTotalAmount" style="color:var(--primary-accent);"><span class="dyn-curr-symbol">₹</span>0.00</span>
+              </h3>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width:100%;"><i class="fa-solid fa-plus"></i> Save Purchase Record</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="card page-transition" style="margin-top:20px;">
+        <h3>Purchase History</h3>
+        <table id="purchasesTable" class="display" style="width:100%">
+          <thead>
+            <tr>
+              <th>PO Number</th>
+              <th>Date</th>
+              <th>Supplier</th>
+              <th>Coal Type</th>
+              <th>Qty (<span class="dyn-wt-unit">MT</span>)</th>
+              <th>Total Amount</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div id="footer-container"></div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="assets/js/api.js?v=2"></script>
+  <script src="assets/js/main.js?v=2"></script>
+  <script src="assets/js/purchases.js"></script>
+</body>
+</html>

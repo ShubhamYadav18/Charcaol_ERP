@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Charcoal ERP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/sidebar.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/tables.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+</head>
+<body>
+  <div class="layout-wrapper">
+    <div id="sidebar-container"></div>
+    <div class="main-content">
+      <div id="navbar-container"></div>
+      
+      <div class="page-header">
+        <h1 class="page-title">Dashboard Overview</h1>
+        <p style="color: var(--text-muted);">Welcome back, Admin. Here's what's happening today.</p>
+      </div>
+
+      <div class="grid-cards">
+        <div class="stat-card card glow-effect">
+          <i class="fa-solid fa-boxes-stacked stat-icon"></i>
+          <div class="stat-info">
+            <h3>Current Stock</h3>
+            <p>15,420 MT</p>
+          </div>
+        </div>
+        <div class="stat-card card glow-effect">
+          <i class="fa-solid fa-arrow-trend-up stat-icon" style="color:var(--success);"></i>
+          <div class="stat-info">
+            <h3>Total Sales (<span class="dyn-wt-unit">MT</span>)</h3>
+            <p>8,250 MT</p>
+          </div>
+        </div>
+        <div class="stat-card card glow-effect">
+          <i class="fa-solid fa-wallet stat-icon" style="color:var(--warning);"></i>
+          <div class="stat-info">
+            <h3>Total Revenue</h3>
+            <p>₹1,245,000</p>
+          </div>
+        </div>
+        <div class="stat-card card glow-effect">
+          <i class="fa-solid fa-file-invoice-dollar stat-icon" style="color:var(--danger);"></i>
+          <div class="stat-info">
+            <h3>Pending Payments</h3>
+            <p>₹350,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:20px; flex-wrap:wrap;">
+        <div class="card" style="flex:2; min-width:300px;">
+          <h3>Revenue vs Expenses (Monthly)</h3>
+          <canvas id="revenueChart" height="100"></canvas>
+        </div>
+        <div class="card" style="flex:1; min-width:300px;">
+          <h3>Stock Distribution</h3>
+          <canvas id="stockChart" height="200"></canvas>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:20px;">
+        <h3>Recent Transactions</h3>
+        <table id="dashboardTable" class="display" style="width:100%">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Client/Supplier</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div id="footer-container"></div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="assets/js/api.js?v=2"></script>
+  <script src="assets/js/main.js?v=2"></script>
+  <script src="assets/js/dashboard.js?v=2"></script>
+</body>
+</html>

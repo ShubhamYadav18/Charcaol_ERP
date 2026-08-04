@@ -1,0 +1,31 @@
+<header class="top-navbar">
+  <button id="mobile-sidebar-toggle" class="sidebar-toggle-btn">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  
+  <div class="company-switcher" style="margin-left: 20px;">
+    <select id="active-company-select" style="padding: 8px 15px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--surface-color); color: var(--text-color); font-weight: 600; cursor: pointer;">
+      <option value="1">Gokul Traders</option>
+      <option value="2">Sanjay Logistics</option>
+    </select>
+  </div>
+  
+
+  <div class="nav-actions">
+    <div class="date-time" id="nav-datetime" style="font-weight:500; font-size:0.9rem;"></div>
+    <button id="theme-toggle" style="background:none; border:none; cursor:pointer; font-size:1.2rem; color:var(--text-muted);"></button>
+    <i class="fa-solid fa-bell"></i>
+    <div class="user-profile" style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+      <img src="https://ui-avatars.com/api/?name=Admin+User&background=FF7A00&color=fff" alt="User" style="width:35px; border-radius:50%;">
+      <span style="font-weight:600;">Admin</span>
+    </div>
+  </div>
+</header>
+<script>
+  setInterval(() => {
+    const el = document.getElementById('nav-datetime');
+    if(el) {
+      el.textContent = new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+    }
+  }, 1000);
+</script>

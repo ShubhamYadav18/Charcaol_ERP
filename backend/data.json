@@ -1,0 +1,209 @@
+[
+{
+  "model": "core.systemsettings",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-05-20T08:40:55.641Z",
+    "updated_at": "2026-05-24T06:18:28.434Z",
+    "created_by": null,
+    "is_deleted": false,
+    "company_name": "Gokul Traders",
+    "address": "Mumbai",
+    "phone_number": "8898446655",
+    "tax_id": "EXEMPTED GOODS",
+    "currency_symbol": "₹ (INR)",
+    "weight_unit": "Kilograms (KG)",
+    "enable_email_notifications": true
+  }
+},
+{
+  "model": "authentication.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$iY9PxpVYoxTGOw3XzDw6LI$9UdBS1CjRg+TGvy2Q0bRKOYxmVWA75QJSt7smY9dzW0=",
+    "last_login": "2026-05-20T12:17:14.893Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@example.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-05-20T08:32:11.267Z",
+    "role": "STAFF",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "customers.customer",
+  "pk": 4,
+  "fields": {
+    "created_at": "2026-05-22T05:28:17.054Z",
+    "updated_at": "2026-05-22T05:28:17.054Z",
+    "created_by": 1,
+    "is_deleted": false,
+    "name": "ITC Maratha",
+    "phone": "8898446655",
+    "address": "Andheri",
+    "gst_number": "BLRP",
+    "po_number": "340",
+    "pending_balance": "0.00"
+  }
+},
+{
+  "model": "customers.customer",
+  "pk": 5,
+  "fields": {
+    "created_at": "2026-05-22T05:28:37.585Z",
+    "updated_at": "2026-05-22T05:28:52.709Z",
+    "created_by": 1,
+    "is_deleted": false,
+    "name": "Punjab Grill",
+    "phone": "1234567",
+    "address": "Lower Parel",
+    "gst_number": "93342",
+    "po_number": "540",
+    "pending_balance": "0.00"
+  }
+},
+{
+  "model": "suppliers.supplier",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-05-22T05:35:50.065Z",
+    "updated_at": "2026-05-22T05:43:42.114Z",
+    "created_by": 1,
+    "is_deleted": true,
+    "supplier_name": "Charcoal Supplier",
+    "phone": "123",
+    "address": "Sewree",
+    "coal_type": "Charcoal",
+    "pending_balance": "0.00"
+  }
+},
+{
+  "model": "suppliers.supplier",
+  "pk": 2,
+  "fields": {
+    "created_at": "2026-05-22T05:36:16.958Z",
+    "updated_at": "2026-05-22T05:43:47.326Z",
+    "created_by": 1,
+    "is_deleted": true,
+    "supplier_name": "Charcoal Supplier",
+    "phone": "123",
+    "address": "Sewree",
+    "coal_type": "Charcoal",
+    "pending_balance": "0.00"
+  }
+},
+{
+  "model": "suppliers.supplier",
+  "pk": 3,
+  "fields": {
+    "created_at": "2026-05-22T05:40:10.575Z",
+    "updated_at": "2026-05-22T05:40:10.575Z",
+    "created_by": 1,
+    "is_deleted": false,
+    "supplier_name": "Charcoal Supplier",
+    "phone": "123",
+    "address": "Sewree",
+    "coal_type": "Charcoal",
+    "pending_balance": "0.00"
+  }
+},
+{
+  "model": "inventory.inventory",
+  "pk": 4,
+  "fields": {
+    "created_at": "2026-05-22T05:29:37.798Z",
+    "updated_at": "2026-05-22T05:44:49.283Z",
+    "created_by": null,
+    "is_deleted": false,
+    "coal_type": "Charcoal",
+    "current_stock_ton": "9800.00",
+    "total_stock_in": "10000.00",
+    "total_stock_out": "200.00"
+  }
+},
+{
+  "model": "purchases.purchase",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-05-22T05:44:49.249Z",
+    "updated_at": "2026-05-22T05:45:03.790Z",
+    "created_by": 1,
+    "is_deleted": false,
+    "supplier": 3,
+    "date": "2026-05-22",
+    "coal_type": "Charcoal",
+    "quantity_ton": "10000.00",
+    "rate": "20.00",
+    "transport_cost": "10000.00",
+    "total_amount": "210000.00",
+    "invoice_number": "123"
+  }
+},
+{
+  "model": "sales.sale",
+  "pk": 8,
+  "fields": {
+    "created_at": "2026-05-22T05:29:37.787Z",
+    "updated_at": "2026-05-22T05:29:37.787Z",
+    "created_by": 1,
+    "is_deleted": false,
+    "invoice_number": "INV-001",
+    "customer": 4,
+    "date": "2026-05-22",
+    "coal_type": "Charcoal",
+    "quantity_ton": "100.00",
+    "rate": "30.00",
+    "vehicle_number": "",
+    "driver_name": "",
+    "delivery_location": "",
+    "total_amount": "3000.00",
+    "paid_amount": "0.00",
+    "pending_amount": "3000.00",
+    "invoice_pdf": ""
+  }
+},
+{
+  "model": "sales.sale",
+  "pk": 9,
+  "fields": {
+    "created_at": "2026-05-22T05:30:41.042Z",
+    "updated_at": "2026-05-22T05:30:41.042Z",
+    "created_by": 1,
+    "is_deleted": false,
+    "invoice_number": "INV-002",
+    "customer": 4,
+    "date": "2026-05-22",
+    "coal_type": "Charcoal",
+    "quantity_ton": "200.00",
+    "rate": "30.00",
+    "vehicle_number": "",
+    "driver_name": "",
+    "delivery_location": "",
+    "total_amount": "6000.00",
+    "paid_amount": "0.00",
+    "pending_amount": "6000.00",
+    "invoice_pdf": "invoices/INV-002.pdf"
+  }
+},
+{
+  "model": "payments.payment",
+  "pk": 6,
+  "fields": {
+    "created_at": "2026-05-22T05:31:32.551Z",
+    "updated_at": "2026-05-22T05:31:32.551Z",
+    "created_by": 1,
+    "is_deleted": false,
+    "customer": 4,
+    "invoice_number": "INV-002",
+    "date": "2026-05-22",
+    "amount": "6000.00",
+    "method": "BANK_TRANSFER",
+    "reference_number": "123"
+  }
+}
+]

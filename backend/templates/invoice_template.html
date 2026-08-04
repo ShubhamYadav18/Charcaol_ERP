@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body { font-family: Helvetica, sans-serif; }
+    .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 20px; }
+    .details { width: 100%; margin-top: 20px; margin-bottom: 20px; }
+    .details td { width: 50%; vertical-align: top; }
+    .table { width: 100%; border-collapse: collapse; }
+    .table th, .table td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    .table th { background-color: #f0f0f0; }
+    .totals { text-align: right; margin-top: 20px; }
+</style>
+</head>
+<body>
+    <div class="header">
+        {% if company_logo %}
+            <img src="{{ company_logo }}" style="max-height: 80px; margin-bottom: 10px;" alt="Logo" />
+        {% endif %}
+        <h1 style="margin: 0; padding: 0;">{{ company_name|upper }}</h1>
+        <p style="margin: 5px 0;">
+            {% if company_address %}{{ company_address }}<br>{% endif %}
+            {% if company_gst %}GST: {{ company_gst }} | {% endif %}
+            {% if company_phone %}Phone: {{ company_phone }} | {% endif %}
+            {% if company_email %}Email: {{ company_email }}{% endif %}
+        </p>
+    </div>
+    
+    <table class="details">
+        <tr>
+            <td>
+                <h3>Billed To:</h3>
+                <p><b>{{ customer_name }}</b><br>
+                {{ customer_address }}<br>
+                GST: {{ customer_gst }}</p>
+            </td>
+            <td style="text-align:right;">
+                <h3>{{ doc_title }} No: {{ invoice_number }}</h3>
+                <p>Date: {{ date }}<br>
+                Vehicle: {{ vehicle }}<br>
+                Driver: {{ driver }}</p>
+            </td>
+        </tr>
+    </table>
+
+    <table class="table">
+        <tr>
+            <th>Description (Product)</th>
+            <th>Quantity (MT)</th>
+            <th>Rate per MT ($)</th>
+            <th>Total ($)</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.product }}</td>
+            <td>{{ item.quantity_ton }}</td>
+            <td>{{ item.rate }}</td>
+            <td>{{ item.amount }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No items found</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="totals">
+        <p><b>Subtotal:</b> ${{ subtotal }}</p>
+        <p><b>Tax:</b> ${{ tax }}</p>
+        <p><b>Grand Total:</b> ${{ total }}</p>
+        <p><b>Paid Amount:</b> ${{ paid }}</p>
+        <h2><b>Pending Balance:</b> ${{ pending }}</h2>
+    </div>
+
+    <div style="margin-top: 40px; border-top: 2px solid #000; padding-top: 20px;">
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 60%; vertical-align: top; font-size: 12px; line-height: 1.5;">
+                    <p style="margin-bottom: 5px;"><b>Bank Details:</b></p>
+                    <p style="margin: 0;">
+                        Bank Name: Central Bank of India<br>
+                        A/c No.: 382010093<br>
+                        IFSC Code: CBIN0280628 (Prabhadevi)
+                    </p>
+                    
+                    <p style="margin-top: 15px; margin-bottom: 5px;"><b>TERMS AND CONDITIONS:</b></p>
+                    <ul style="margin: 0; padding-left: 15px; font-size: 11px;">
+                        <li>All Disputes will be Mumbai justice.</li>
+                        <li>Goods once sold are not changeable or will not be Return.</li>
+                    </ul>
+                </td>
+                <td style="width: 40%; text-align: right; vertical-align: bottom;">
+                    <div style="border-top: 1px solid #000; width: 180px; display: inline-block; text-align: center; padding-top: 5px; font-size: 14px;">
+                        Authorized Signatory
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

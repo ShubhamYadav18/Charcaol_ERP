@@ -1,0 +1,165 @@
+/* Responsive Adjustments */
+
+/* Lock down HTML/Body viewport to prevent any accidental horizontal scroll/zoom */
+html, body, .layout-wrapper {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+  
+  .main-content {
+    margin-left: 0;
+    padding: 15px;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+  
+  .sidebar-toggle-btn {
+    display: block;
+  }
+
+  .grid-cards {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  /* Give floating modals a beautiful, safe 15px screen margin on mobile devices */
+  .modal {
+    padding: 15px !important;
+  }
+
+  .modal-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 20px !important; /* Slightly smaller padding to maximize mobile typing space */
+  }
+
+  /* Prevent horizontal layout breakage from wide elements (like tables) */
+  .card {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  /* Force DataTables wrapper to scroll horizontally instead of stretching the card */
+  .dataTables_wrapper {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Override hardcoded inline display:flex on page-headers to prevent horizontal overflow */
+  .page-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 15px !important;
+    margin-bottom: 20px;
+    width: 100% !important;
+  }
+
+  .page-header .btn-primary {
+    width: 100% !important; /* Make single buttons full width */
+    text-align: center;
+  }
+
+  /* Stack multiple page action buttons (like Export/Print) vertically on mobile and clear inline margin overlaps */
+  .page-header div:last-child {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+    margin-left: 0 !important;
+  }
+
+  .page-header div:last-child .btn-primary {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Reduce body/layout paddings for mobile viewports */
+  .main-content {
+    padding: 10px;
+  }
+
+  .top-navbar {
+    padding: 10px 15px;
+    gap: 10px;
+  }
+  
+  .top-navbar .date-time {
+    display: none;
+  }
+
+  .top-navbar .search-bar input {
+    width: 150px;
+  }
+
+  .page-title {
+    font-size: 1.4rem;
+  }
+
+  /* Prevent inline-styled forms and rows from pushing inputs to the right (due to align-items: flex-end) */
+  .form-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important; /* Forces inputs to stretch across the full card width */
+    gap: 15px !important;
+  }
+
+  /* Override inline flex weights (like flex:2, flex:0.5) to make inputs clean, uniform and full-width */
+  .form-row .form-group {
+    flex: none !important;
+    width: 100% !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Force 16px font-size for all mobile inputs to prevent automatic iOS/mobile browser zoom-on-focus */
+  input, select, textarea, .form-control {
+    font-size: 16px !important;
+  }
+
+  /* Invoice Scroll Container for Mobile Screens */
+  .invoice-scroll-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+/* Force the invoice to ALWAYS maintain its perfect desktop aspect ratio and layout at exactly 720px width */
+/* This prevents any horizontal clipping/cut-off in A4/Letter PDF page downloads on both laptops and phones */
+.invoice-wrapper {
+  width: 720px !important;
+  min-width: 720px !important;
+  max-width: 720px !important;
+  padding: 30px !important;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
+  background: #fff !important;
+}
+
+@media (max-width: 576px) {
+  /* On extra-small screens, hide the user profile text to save horizontal space */
+  .top-navbar .nav-actions .user-profile span {
+    display: none !important;
+  }
+  
+  .top-navbar .nav-actions {
+    gap: 12px !important;
+  }
+}
+
+

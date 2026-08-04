@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports - Charcoal ERP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/sidebar.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/tables.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="layout-wrapper">
+    <div id="sidebar-container"></div>
+    <div class="main-content">
+      <div id="navbar-container"></div>
+      
+      <div class="page-header" style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <h1 class="page-title">Analytics & Reports</h1>
+          <p style="color: var(--text-muted);">Generate insights and performance reports.</p>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button class="btn-primary" style="background:var(--success);" id="btnExportExcel"><i class="fa-solid fa-file-excel"></i> Export Excel</button>
+          <button class="btn-primary" style="background:var(--danger);" id="btnExportPDF"><i class="fa-solid fa-file-pdf"></i> Download PDF</button>
+        </div>
+      </div>
+
+      <div class="card page-transition">
+        <form id="reportFilterForm" class="form-row" style="align-items:flex-end;">
+          <div class="form-group">
+            <label>Report Type</label>
+            <select class="form-control" id="rType">
+              <option value="sales">Sales Report</option>
+              <option value="purchases">Purchase Report</option>
+              <option value="pending_payments">Pending Payments</option>
+              <option value="profit_loss">Profit/Loss Report</option>
+            </select>
+          </div>
+          <div class="form-group" id="rPartyGroup">
+            <label id="rPartyLabel">Customer</label>
+            <select class="form-control" id="rParty">
+              <option value="">All Customers</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Start Date</label>
+            <input type="date" class="form-control" id="rStart">
+          </div>
+          <div class="form-group">
+            <label>End Date</label>
+            <input type="date" class="form-control" id="rEnd">
+          </div>
+          <div class="form-group" style="flex:0.5;">
+            <button type="button" class="btn-primary" style="width:100%; padding:12px;" onclick="generateReport()"><i class="fa-solid fa-filter"></i> Filter</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="grid-cards" style="margin-bottom:20px;">
+        <div class="card page-transition" style="flex:1; display:none;" id="trendCard">
+          <h3>Sales Trend</h3>
+          <div style="position: relative; height: 350px; width: 100%;">
+            <canvas id="salesTrendChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="card page-transition" style="margin-bottom:20px;">
+        <h3 id="reportTitle">Generated Report</h3>
+        <div class="table-responsive" style="margin-top:15px;">
+          <table id="reportTable" class="display" style="width:100%">
+            <thead>
+              <!-- Headers dynamically injected -->
+            </thead>
+            <tbody>
+              <!-- Data dynamically injected -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="footer-container"></div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Export Libraries -->
+  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <script src="assets/js/api.js?v=2"></script>
+  <script src="assets/js/main.js?v=2"></script>
+  <script src="assets/js/reports.js"></script>
+</body>
+</html>

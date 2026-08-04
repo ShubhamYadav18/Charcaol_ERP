@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statements - Charcoal ERP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/sidebar.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/tables.css">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <style>
+    .statement-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--border-color);
+    }
+    .print-only { display: none; }
+    @media print {
+      body * { visibility: hidden; }
+      #printableStatement, #printableStatement * { visibility: visible; }
+      #printableStatement { position: absolute; left: 0; top: 0; width: 100%; }
+      .sidebar, .top-navbar, .no-print { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout-wrapper">
+    <div id="sidebar-container"></div>
+    <div class="main-content">
+      <div id="navbar-container"></div>
+      
+      <div class="page-header">
+        <h1 class="page-title">Account Statements</h1>
+      </div>
+
+      <div class="card no-print">
+        <div class="form-row" style="align-items:flex-end;">
+          <div class="form-group" style="flex:2;">
+            <label>Select Customer</label>
+            <select class="form-control" id="stParty">
+              <option value="">Select Customer...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Start Date</label>
+            <input type="date" class="form-control" id="stStart">
+          </div>
+          <div class="form-group">
+            <label>End Date</label>
+            <input type="date" class="form-control" id="stEnd">
+          </div>
+          <div class="form-group">
+            <button class="btn-primary" style="width:100%; padding:12px;" onclick="loadStatement()"><i class="fa-solid fa-eye"></i> View Statement</button>
+          </div>
+          <div class="form-group">
+            <button class="btn-primary" style="background:var(--danger); width:100%; padding:12px;" onclick="downloadStatementPDF()"><i class="fa-solid fa-download"></i> Download PDF</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card page-transition" id="printableStatement" style="background:#fff; color:#000;">
+        <div class="statement-header">
+          <h2 style="color:#111; font-family:'Poppins';" class="dyn-company-name-upper">CHARCOAL ERP INC.</h2>
+          <p style="color:#555;" class="dyn-company-merged-address">123 Industrial Park, Coal City, NY 10001 | Contact: +1 800-COAL-ERP | info@charcoalerp.com</p>
+          <h3 style="margin-top:20px; color:#111; border-top:1px solid #ddd; padding-top:10px;">STATEMENT OF ACCOUNT</h3>
+        </div>
+        
+        <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+          <div>
+            <p><strong>To:</strong> <span id="stName">Select a Customer</span></p>
+            <p><strong>Date:</strong> <span id="stDate"></span></p>
+          </div>
+          <div style="text-align:right;">
+            <p><strong>Opening Balance:</strong> <span id="stOpeningBalance"><span class="dyn-curr-symbol">₹</span>0.00</span></p>
+            <p><strong>Closing Balance:</strong> <span id="stClosingBalance" style="color:#ef4444; font-weight:bold;"><span class="dyn-curr-symbol">₹</span>0.00</span></p>
+          </div>
+        </div>
+
+        <table style="width:100%; border-collapse:collapse; margin-bottom:30px;">
+          <thead>
+            <tr style="background:#f4f5f7; border-bottom:2px solid #ddd;">
+              <th style="padding:10px; text-align:left; color:#111;">Date</th>
+              <th style="padding:10px; text-align:left; color:#111;">Ref / Inv #</th>
+              <th style="padding:10px; text-align:right; color:#111;">Debit (₹)</th>
+              <th style="padding:10px; text-align:right; color:#111;">Credit (₹)</th>
+              <th style="padding:10px; text-align:right; color:#111;">Balance (₹)</th>
+            </tr>
+          </thead>
+          <tbody id="stBody">
+            <tr>
+              <td colspan="5" style="padding:10px; text-align:center; color:var(--text-muted);">Please select a customer to view their statement.</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <p style="text-align:center; color:#555; font-size:0.9rem;">Thank you for your business. Please clear your dues on or before the due date.</p>
+      </div>
+
+      <div id="footer-container"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="assets/js/api.js?v=2"></script>
+  <script src="assets/js/main.js?v=2"></script>
+  <script src="assets/js/statements.js"></script>
+</body>
+</html>

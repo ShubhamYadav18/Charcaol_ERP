@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - Charcoal ERP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/sidebar.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+</head>
+<body>
+  <div class="layout-wrapper">
+    <div id="sidebar-container"></div>
+    <div class="main-content">
+      <div id="navbar-container"></div>
+      
+      <div class="page-header">
+        <h1 class="page-title">System Settings</h1>
+      </div>
+
+      <div class="grid-cards">
+        <div class="card page-transition">
+          <h3>Company Profile</h3>
+          <form id="profileForm" style="margin-top:20px;">
+            <div class="form-group">
+              <label>Company Name</label>
+              <input type="text" class="form-control" id="stCompanyName" required>
+            </div>
+            <div class="form-group">
+              <label>Address</label>
+              <input type="text" class="form-control" id="stAddress" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" class="form-control" id="stPhone" required>
+              </div>
+              <div class="form-group">
+                <label>GST / Tax ID</label>
+                <input type="text" class="form-control" id="stTaxId" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" class="form-control" id="stEmail" required>
+              </div>
+            </div>
+            <button class="btn-primary" style="margin-top:20px;">Save Changes</button>
+          </form>
+        </div>
+
+        <div class="card page-transition">
+          <h3>Preferences</h3>
+          <form id="preferencesForm" style="margin-top:20px;">
+            <div class="form-group">
+              <label>Currency Symbol</label>
+              <select class="form-control" id="stCurrency">
+                <option value="₹ (INR)">₹ (INR)</option>
+                <option value="$ (USD)">$ (USD)</option>
+                <option value="€ (EUR)">€ (EUR)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Default Weight Unit</label>
+              <select class="form-control" id="stWeightUnit">
+                <option value="Metric Tonnes (<span class="dyn-wt-unit">MT</span>)">Metric Tonnes (<span class="dyn-wt-unit">MT</span>)</option>
+                <option value="Kilograms (KG)">Kilograms (KG)</option>
+              </select>
+            </div>
+            <div class="form-group" style="display:flex; align-items:center; gap:10px;">
+              <input type="checkbox" id="stEmailNotif" style="width:18px; height:18px;">
+              <label for="stEmailNotif" style="margin:0;">Enable Email Notifications for Low Stock</label>
+            </div>
+            <button class="btn-primary" style="margin-top:20px;">Update Preferences</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="footer-container"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="assets/js/api.js?v=2"></script>
+  <script src="assets/js/main.js?v=2"></script>
+  <script src="assets/js/settings.js"></script>
+</body>
+</html>
